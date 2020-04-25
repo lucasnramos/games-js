@@ -2,8 +2,11 @@
     display: none;
 }
 .grid {
-    display: flex;
-    flex-wrap: wrap;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
     width: 300px;
     height: 300px;
 }
+
