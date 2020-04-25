@@ -57,7 +57,6 @@ function checkForMatch() {
 //flip your card
 function flipCard() {
     const cardId = this.getAttribute('data-id')
-    //cardsChosen.push(cardsArray[cardId].name)
     cardsChosen.push(cardsArray[cardId].name)
     cardsChosenId.push(cardId)
     this.setAttribute('src', cardsArray[cardId].img)
