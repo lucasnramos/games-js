@@ -1,0 +1,9 @@
+.hidden {
+    display: none;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+}
