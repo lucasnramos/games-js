@@ -1,41 +1,33 @@
-// TODO: this will be the timer. probably with OOP
-export class Timer {
-  timer;
-  constructor() {}
+class Timer {
+  timerRef;
+
+  constructor(minutes = 0, seconds = 0) {
+    this.minutes = minutes;
+    this.seconds = seconds;
+  }
 
   startTimer() {
-    let minutes = 0;
-    let seconds = 0;
-    const minutesDOM = document.getElementById("timer-minutes");
-    const secondsDOM = document.getElementById("timer-seconds");
-
-    timer = setInterval(() => {
+    this.timerRef = setInterval(() => {
       // Set the correct number to seconds and minutes
       // TODO: prevent minutes from > 59
-      if (seconds < 59) {
-        seconds++;
+      if (this.seconds < 59) {
+        this.seconds++;
       } else {
-        seconds = 0;
-        minutes++;
+        this.seconds = 0;
+        this.minutes++;
       }
-      // update DOM
-
-      if (minutes < 10) {
-        minutesDOM.textContent = `0${minutes}: `;
-      } else {
-        minutesDOM.textContent = `${minutes}: `;
-      }
-      if (seconds < 10) {
-        secondsDOM.textContent = "0" + seconds;
-      } else {
-        secondsDOM.textContent = seconds;
-      }
-
-      console.log(`${minutes}: ${seconds}`);
     }, 1000);
   }
 
-  stopTimer() {
-    clearInterval(timer);
+  pauseTimer() {
+    clearInterval(this.timerRef);
+    console.log( this.minutes, this.seconds);
   }
+
+  resetTimer() {
+    this.pauseTimer();
+    this.seconds = 0;
+    this.minutes = 0
+  }
+
 }
