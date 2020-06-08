@@ -26,7 +26,7 @@ let cardsChosenId = [];
 //create your board
 function createBoard() {
   grid.innerHTML = ""
-  cardsArray.forEach((card, i) => {
+  cardsArray.forEach((_, i) => {
     const cardEl = document.createElement("img");
     cardEl.setAttribute("src", blankTile.img);
     cardEl.setAttribute("data-id", i);
@@ -70,23 +70,36 @@ function flipCard() {
 
 
 function gameStart() {
+  // DOM elements
   const gameIntro = document.querySelector("#game-intro");
   const gameBoard = document.querySelector("#game-board");
 
+  // Changes view from intro to gameplay
   gameIntro.classList.add("hidden");
   gameBoard.classList.remove("hidden");
 
   createBoard();
-  timer.startTimer();
-  // Set DOM element ot update with timer
-  const DOMSeconds = document.querySelector("#timer-seconds")
-  const DOMMinutes = document.querySelector("#timer-minutes");
+  timer.startTimer(updateDOMTimer);
+}
 
-  DOMSeconds.innerHTML = timer.seconds;
+function gameUnpause() {
+  timer.startTimer(updateDOMTimer)
+}
+
+function gamePause() {
+  timer.pauseTimer()
 }
 
 function gameRestart() {
   resultDisplay.textContent = "0";
   createBoard()
-  timer.pauseTimer()
+  timer.resetTimer(updateDOMTimer)
+}
+
+function updateDOMTimer() {
+  const DOMTimer = document.querySelector("#timer");
+  DOMTimer.innerText = `${
+      timer.minutes < 10 ? '0'+timer.minutes : timer.minutes
+    }:${
+      timer.seconds < 10 ? '0'+timer.seconds : timer.seconds}`
 }
