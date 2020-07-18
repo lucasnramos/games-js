@@ -1,9 +1,7 @@
-# Games.js
+# Things.js
 
-Collection of games written in JavaScript (mostly vanilla)
+Collection of "things" written in pure JavaScript.
 
 ## Why?
 
-As an exercise in writing front end applications without frameworks, therefore, understanding better how things work 'under the hood'
-
-
+As an exercise in writing front end applications without frameworks, therefore, understanding better how JavaScript works.
